@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head> 
+  <!-- перед charset ОБЯЗАТЕЛЬНО точку с запятой иначе IE не распознает кодировку -->         
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <meta name="author" content="OlegTripolskiy" />
+  <title>Урок css3 Box Model </title> 
+  
+  <!-- ФАЙЛЫ со скриптами -->
+  <script src="js/jquery-1.11.1.js"></script> <!-- Основная библиотека jQuery -->
+  <script src="js/jquery-ui.js"></script>     <!--  для Слайдера jQuery библиотека виджетов-->
+  <script src="js/htmlElements_06v05.js"></script> <!-- Мои скрипты -->
+  
+  <!-- ФАЙЛЫ со стилями  -->
+  <link rel="stylesheet" type="text/css" href="css/htmlElements_06v05.css" />  <!-- Мои стили для ЭТОГО файла  -->
+  <link rel="stylesheet" type="text/css" href="css/slider-fromXiper_06v04.css" />  <!-- стили для слайдера с Xiper  -->    
+</head>
+
+<body>
+<h4>БЛОКОВАЯ МОДЕЛЬ для блочных, строчных и строчно-блочных элементов</h4>
+<br /><br />
+<!-- ПРОБА feildset -->
+<fieldset 
+  style="
+    background-image: linear-gradient(to top, #C9C9C9, #FFFFFF);
+    border-radius: 5px;/**/
+    width: 30%;
+">
+  <legend>Проба оформления feildset</legend>
+  <div ></div>
+  <!---->
+  <input type="range" min="0" max="200" value="0">
+  
+</fieldset>
+<br>
+<!-- КОНЕЦ пробы feildset--> 
+  
+<!-- ======  ПАНЕЛЬ УПРАВЛЕНИЯ position: fixed ===== -->
+<div id="controlPanel">
+  <h4>Панель управления html-элементом</h4> 
+    
+  <!-- ТАБЛИЦА со СЛАЙДЕРАМИ -->       
+  <table id="sliders"> 
+    <!-- Область БЛОКОВОЙ МОДЕЛИ -->
+    <tr class="section"><td><input type="checkbox" id="ch-1" /></td><td>1. Области блоковой модели</td><td id="elemName">Элемент: </td><td id="elemDisplay">значение</td></tr>
+  
+    <tr class="sec-1"><td></td><td>Содержимое элемента (текст): </td>
+        <td><input type="button" id="textDelete" value="<< Удалять"/>
+            <input type="button" id="textInput" value="Заполнять >>"/>
+        </td><td>CSS - свойства</td></tr>
+    <tr class="sec-1"><td></td><td>Внутренний отступ: </td><td><div id="slider-01"></div></td><td id="val-01">значение</td></tr>    
+    <tr class="sec-1"><td></td><td>Ширина рамки: </td><td><div id="slider-02"></div></td><td id="val-02">значение</td></tr>
+    <tr class="sec-1"><td></td><td>Внешний отступ: </td><td><div id="slider-03"></div></td><td id="val-03">значение</td></tr>
+    
+    <!-- Устанавливать ШИРИНУ и ВЫСОТУ содежимого -->
+    <tr class="section"><td><input type="checkbox" id="ch-2" checked="" /></td><td>2. Установить ширину, высоту</td><td >содержимого</td>
+      <td><span id="val-05-1"></span>, <span id="val-06-1"></span></td>
+    </tr>
+    <tr class="sec-2"><td></td><td>Ширина содержимого: </td><td><div id="slider-05"></div></td><td id="val-05" >значение</td></tr>
+    <tr class="sec-2"><td></td><td>Высота содержимого: </td><td><div id="slider-06"></div></td><td id="val-06" >значение</td></tr>
+    
+    <!-- Устанавливать ЦВЕТ ФОНА И ПРОЗРАЧНОСТЬ ЭЛЕМЕНТА -->
+    <tr class="section"><td><input type="checkbox" id="ch-3" checked="" /></td><td>3. Установить цвет фона</td><td >и прозрачность элемента</td>
+      <td><span id="val-05-1"></span>, <span id="val-06-1"></span></td>
+    </tr>    
+    <tr class="sec-3"><td></td><td>красный: </td><td><div id="slider-07"></div></td><td id="val-07" >значение</td></tr>
+    <tr class="sec-3"><td></td><td>зеленый: </td><td><div id="slider-08"></div></td><td id="val-08" >значение</td></tr>
+    <tr class="sec-3"><td></td><td>синий: </td><td><div id="slider-09"></div></td><td id="val-09" >значение</td></tr>
+    <tr class="sec-3"><td></td><td>прозрачность: </td><td><div id="slider-10"></div></td><td id="val-10" >значение</td></tr>
+  </table>
+  <br />
+</div>  
+<!-- ПУСТОЙ ДИВ - РАЗМЕР по вертикали Д.Б. как у controlPanel. Он занимает  место FIXED т.к. controlPanel- FIXED выдернуто из потока -->
+<div id="forFixed"></div>
+<!--  === КОНЕЦ панели управления + ПУСТОЙ ДИВ -->  
+
+<!-- === ПАНЕЛЬ ДЕМОНСТРАЦИЙ с ОКНАМИ демонстраций ===  -->
+<div id="demonstration">
+  <h4>Панель демонстрации</h4> 
+  <p id="spacer">
+    Щелкните на любом элементе и управляйте его свойствами с помощью панели управления.
+  </p>
+
+<!-- НОВАЯ СТРУКТУРА ДЛЯ ДЕМОНСТРАЦИИ -->
+<!-- БЛОЧНЫЕ ЭЛЕМЕНТЫ  -->
+<div class="demo left" >  
+  <h4>Блочные элементы</h4> 
+  <p id="el_02" class="elem" data-color="">блочный</p>
+  <p id="el_06" class="elem" data-color="">блочный</p>
+</div>
+
+<!-- СТРОЧНЫЕ ЭЛЕМЕНТЫ  -->
+<div class="demo right" >
+  <h4>Строчные элементы</h4> 
+  <span id="el_01" class="elem" data-color="">Строчный</span>
+  <span id="el_05" class="elem" data-color="">Строчный</span>
+     <!-- Картинка, которая выходит за пределы блочного элемента. <img src="img/fotoLogo_02.jpg" />  -->
+</div>
+<div class="clear"></div> <!-- ПРОКЛАДКА между окнами - чтобы был промежуток -->
+
+<!-- СТРОЧНО - БЛОЧНЫЕ ЭЛЕМЕНТЫ-->
+<div class="demo center">
+  <h4>Строчно - блочные элементы</h4>
+  <div id="el_03" class="elem" data-color="">строчно-блочный</div>
+  <div id="el_04" class="elem" data-color="">строчно-блочный</div>
+</div>
+
+</div>  <!-- КОНЕЦ ОКНА ДЕМОНСТРАЦИИ -->
+
+<article>
+  !!! ВНИМАНИЕ ДЛЯ МЕНЯ !!! Можно переносить Неразрывное содержимое с помощью CSS- стиля word-wrap: break-word;
+</article>
+<footer>ПОДВАЛ</footer>
+
+</body>
+</html>
+
+<script>
+
+
+</script>
